@@ -22,37 +22,137 @@
 
 <p><img src="https://si0.twimg.com/profile_images/206948941/wall-e.jpg" alt="icon" /></p>
 
-<p><img src="https://www.e2r.jp/export/ja/dena2014/images/dena_logo.png" alt="dena" /></p>
+<p>Working at : <a href="http://dena.com/"><img src="https://www.e2r.jp/export/ja/dena2014/images/dena_logo.png" alt="dena" /></a></p>
 
 <p>Twitter : <a href="https://twitter.com/yosuke_furukawa">@yosuke_furukawa</a></p>
 
+<p>Blog : <a href="http://yosuke-furukawa.hatenablog.com/">from scratch</a></p>
+
+<p>Community : <a href="http://nodejs.jp/"><img src="http://joyeur.files.wordpress.com/2011/11/node_logo-01.png" alt="node" /></a></p>
+
 </div>
 <div class="step" data-y="0" data-x="2400">
-<h2>How to use?</h2>
+<h2>What is Node.js ?</h2>
 
-<ol>
-<li>Write markdown.</li>
-<li><p>Run <strong>markdown2impress.pl</strong>, then generate 'js/impress.js', 'css/impress.css' and 'index.html'.</p>
+<p>Javascript on <code>***</code> (Server, Arduino, Rapsberry PI, etc.)</p>
 
-<pre><code>% markdown2impress README.md
-</code></pre></li>
-</ol>
+<p>Not only web browser !!!</p>
 
 </div>
 <div class="step" data-y="0" data-x="3600">
-<h2>Slide Dividing rule</h2>
+<h2>Keywords</h2>
 
-<p>Each slide is divided into sections.</p>
+<ol>
+<li>Non-Blocking IO</li>
+<li>Single Thread</li>
+<li>Event Driven</li>
+<li>process.nextTick</li>
+<li>Stream</li>
+</ol>
+
+</div>
+<div class="step" data-y="0" data-x="4800">
+<h2>But I dont have time to talk all of these things.</h2>
+
+<p>If you have an interest, you would read these to be better.</p>
+
+<p><a href="http://www.amazon.co.jp/%E3%82%B5%E3%83%BC%E3%83%90%E3%82%B5%E3%82%A4%E3%83%89JavaScript-Node-js%E5%85%A5%E9%96%80-%E6%B8%85%E6%B0%B4%E4%BF%8A%E5%8D%9A/dp/4048703676"><img src="http://ec2.images-amazon.com/images/I/511TIB5mncL._SL500_AA300_.jpg" alt="nyumon" /></a></p>
+
+<p><a href="https://dl.dropboxusercontent.com/u/3685/presentations/node-patterns/node-patterns.pdf">Node.js Patterns and Opinions</a></p>
+
+<p><a href="http://www.publickey1.jp/blog/11/nodejs.html">Node.jsとは何か(Ryan Dahlの講演)</a></p>
 
 </div>
 <div data-z="500" data-rotate="90" data-scale="3" class="step" data-y="3000" data-x="1000">
-<h2>'data-*' attribute rule</h2>
+<h2>Play with Node!!!! </h2>
 
 <!-- data-x="1000" -->
 <!-- data-y="3000" -->
 <!-- data-z="500" -->
 <!-- data-scale="3" -->
 <!-- data-rotate="90" -->
+
+</div>
+<div data-z="500" data-rotate="90" data-scale="3" class="step" data-y="4000" data-x="2000">
+<h2>Hello JSCafe on HTTP</h2>
+
+<!-- data-x="2000" -->
+<!-- data-y="4000" -->
+<!-- data-z="500" -->
+<!-- data-scale="3" -->
+<!-- data-rotate="90" -->
+
+<p>easy to write!!</p>
+
+<pre><code>var http = require('http');
+http.createServer(function(req, res){
+  res.writeHead(200);
+  res.end("&lt;h1&gt;hello jscafe.&lt;/h1&gt;");
+}).listen(3000);
+</code></pre>
+
+</div>
+<div class="step" data-y="800" data-x="0">
+<h2>Hello JSCafe on chat with you.</h2>
+
+<p>node.js chat!!</p>
+
+<pre><code>var net = require('net');
+var clients = [];
+var server = net.createserver(function(sock){
+  sock.on('end', function(){
+    sock.emit('data', "goodbye!! \n");
+    clients.splice(clients.indexof(sock), 1);
+  });
+  sock.resume();
+  clients.foreach(function(i){
+    sock.pipe(i, {end:false}).pipe(sock, {end:false});
+  });
+  clients.push(sock);
+});
+server.listen(1337);
+</code></pre>
+
+</div>
+<div class="step" data-y="800" data-x="1200">
+<h2>Hello JSCafe on chat with you.</h2>
+
+<p>please access</p>
+
+<pre><code>$ nc &lt;IP address&gt; 1337
+</code></pre>
+
+</div>
+<div class="step" data-y="800" data-x="2400">
+<h2>I guess my greetings reach you.</h2>
+
+<p>Node is fun??</p>
+
+<p>"I'm Fan!!"</p>
+
+</div>
+<div data-z="2500" data-rotate="180" data-scale="3" class="step" data-y="3000" data-x="3000">
+<h2>I guess 10 minutes left....</h2>
+
+<!-- data-x="3000" -->
+<!-- data-y="3000" -->
+<!-- data-z="2500" -->
+<!-- data-scale="3" -->
+<!-- data-rotate="180" -->
+
+</div>
+<div class="step" data-y="800" data-x="3600">
+<h2>Socket.io</h2>
+
+<p><a href="http://socket.io/"><img src="http://www.tonylea.com/wp-content/uploads/2012/07/socket-io.png" alt="socket.io" /></a></p>
+
+</div>
+<div class="step" data-y="800" data-x="4800">
+<h2>Socket.io is realtime library</h2>
+
+</div>
+<div class="step" data-y="1600" data-x="0">
+<h2>DDD</h2>
 
 <p>'data-*' attribute for impress.js represent HTML comment.
 This comment must be write in secion.</p>
@@ -69,7 +169,7 @@ This comment must be write in secion.</p>
 <p>See <a href="http://bartaz.github.com/impress.js/">impress.js</a> manual for details.</p>
 
 </div>
-<div class="step" data-y="0" data-x="4800">
+<div class="step" data-y="1600" data-x="1200">
 <h2>Command line options</h2>
 
 <ul>
