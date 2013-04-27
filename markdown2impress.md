@@ -25,12 +25,156 @@ Keywords
 ----------
 
 1. Non-Blocking IO
-2. Single Thread
-3. Event Driven
+2. Callbacks
+3. Single Thread
 4. process.nextTick
-5. Stream
+5. Event Emitter
 
-But I dont have time to talk all of these things.
+Non Blocking I/O
+----------
+
+    printLine("Please input your name: ");
+    var name = getLine();
+    var result = db.save(name);
+    if (result === 'ok')
+      printLine("saved!");
+
+[reference](https://dl.dropboxusercontent.com/u/3685/presentations/node-patterns/node-patterns.pdf)
+note: pseudo code.
+
+Non Blocking I/O
+----------
+
+    printLine("Please input your name: ");
+    // non blocked this line, go next.
+    var name = getLine();
+    // name is *undefined*.
+    var result = db.save(name);
+    // result is always not 'ok' !!!
+    if (result === 'ok')
+      printLine("saved!");
+
+Callbacks
+----------
+
+    printLine("Please input your name: ", function(){
+      getLine(function(err, name) {
+        db.save(name, function(err, r) {
+          if (r === 'ok')
+            printLine("saved!");
+        });
+      });
+    });
+
+
+single thread
+----------
+
+    printLine("Please input your name: ", function(){
+      getLine(function(err, name) {
+        db.save(name, function(err, r) {
+          if (r === 'ok')
+            printLine("saved!");
+          // add new code
+          db.getAll(function(err, names) {
+            names.forEach(function(name) {
+              printLine(name);
+            });
+          });
+        });
+      });
+    });
+
+single thread
+----------
+
+    printLine("Please input your name: ", function(){
+      getLine(function(err, name) {
+        db.save(name, function(err, r) {
+          if (r === 'ok')
+            printLine("saved!");
+          db.getAll(function(err, names) {
+            // if num of names is huge.
+            // stop all tasks !!!
+            names.forEach(function(name) {
+              printLine(name);
+            });
+          });
+        });
+      });
+    });
+
+process.nextTick
+----------
+
+    printLine("Please input your name: ", function(){
+      getLine(function(err, name) {
+        db.save(name, function(err, r) {
+          if (r === 'ok')
+            printLine("saved!");
+          db.getAll(function(err, names) {
+            names.forEach(function(name) {
+              // Dont stop all task.
+              process.nextTick(function(){
+                printLine(name);
+              });
+            });
+          });
+        });
+      });
+    });
+
+Crazy callbacks...
+----------
+
+    printLine("Please input your name: ", function(){
+      getLine(function(err, name) {
+        db.save(name, function(err, r) {
+          if (r === 'ok')
+            printLine("saved!");
+          db.getAll(function(err, names) {
+            names.forEach(function(name) {
+              process.nextTick(function(){
+                printLine(name);
+              });
+            });
+          });
+        });
+      });
+    });
+
+Event Emitter!!
+----------
+
+    var event = new EventEmitter();
+    event.on('hoge', function(arg) {
+      printLine(arg);
+    });
+    event.emit('hoge', 'fuga');
+    // print fuga
+
+Event Emitter!!
+----------
+
+    printLine("Please input your name: ", function(){
+      getLine(function(err, name) {
+        db.emit('save', name);
+      });
+    });
+    db.on('save end', function(err, r) {
+      if (r === 'ok')
+        printLine("saved!");
+      db.emit('getAll');
+    });
+    db.on('getAll end', function(err, names){
+      names.forEach(function(name) {
+        process.nextTick(function(){
+          printLine(name);
+        });
+      });
+    });
+
+I dont have time to talk all keywords.
 ---------
 
 If you have an interest, you would read these to be better.
@@ -41,28 +185,22 @@ If you have an interest, you would read these to be better.
 
 [Node.jsとは何か(Ryan Dahlの講演)](http://www.publickey1.jp/blog/11/nodejs.html)
 
-Play with Node!!!! 
+I guess 10 minutes left...
+---------
+<!-- data-scale="3"  -->
+<!-- data-rotate="360" -->
+
+Play with Node!!!!
 ----------
-<!-- data-x="1000" -->
-<!-- data-y="3000" -->
-<!-- data-z="500" -->
-<!-- data-scale="3" -->
-<!-- data-rotate="90" -->
 
 
 Hello JSCafe on HTTP
 ---------
-<!-- data-x="2000" -->
-<!-- data-y="4000" -->
-<!-- data-z="500" -->
-<!-- data-scale="3" -->
-<!-- data-rotate="90" -->
 
 easy to write!!
 
     var http = require('http');
     http.createServer(function(req, res){
-      res.writeHead(200);
       res.end("<h1>hello jscafe.</h1>");
     }).listen(3000);
 
@@ -101,7 +239,7 @@ Node is fun??
 
 "I'm Fan!!"
 
-I guess 10 minutes left....
+I guess 5 minutes left....
 -------
 <!-- data-x="3000" -->
 <!-- data-y="3000" -->

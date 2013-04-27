@@ -162,8 +162,8 @@ if ("ontouchstart" in document.documentElement) {
     document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
 }
 </script>
+<script src="http://www.yosuke-furukawa.info:5000/socket.io/socket.io.js"></script>
 <script src="js/impress.js"></script>
-
 </body>
 </html>
 
@@ -428,21 +428,35 @@ if ("ontouchstart" in document.documentElement) {
         
         current = target;
         active = el;
-        
         return el;
     };
-    
+   
+    var presenter = io.connect('http://www.yosuke-furukawa.info:5000/');
+    var listener = io.connect('http://www.yosuke-furukawa.info:5000/');
+    listener.on('sync', function(index) {
+        console.log(index);
+        var current = index >= 0 ? 
+               index < steps.length ?
+               steps[ index ]
+               : steps[ 0 ]
+               : steps[ steps.length-1 ];
+        console.log(current);
+        return select(current);
+    });
     var selectPrev = function () {
         var prev = steps.indexOf( active ) - 1;
+        var index = prev;
         prev = prev >= 0 ? steps[ prev ] : steps[ steps.length-1 ];
-        
+        presenter.emit('sync', index);
         return select(prev);
     };
     
     var selectNext = function () {
         var next = steps.indexOf( active ) + 1;
+        var index = next;
         next = next < steps.length ? steps[ next ] : steps[ 0 ];
         
+        presenter.emit('sync', index);
         return select(next);
     };
     

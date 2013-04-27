@@ -44,15 +44,176 @@
 
 <ol>
 <li>Non-Blocking IO</li>
+<li>Callbacks</li>
 <li>Single Thread</li>
-<li>Event Driven</li>
 <li>process.nextTick</li>
-<li>Stream</li>
+<li>Event Emitter</li>
 </ol>
 
 </div>
 <div class="step" data-y="0" data-x="4800">
-<h2>But I dont have time to talk all of these things.</h2>
+<h2>Non Blocking I/O</h2>
+
+<pre><code>printLine("Please input your name: ");
+var name = getLine();
+var result = db.save(name);
+if (result === 'ok')
+  printLine("saved!");
+</code></pre>
+
+<p><a href="https://dl.dropboxusercontent.com/u/3685/presentations/node-patterns/node-patterns.pdf">reference</a>
+note: pseudo code.</p>
+
+</div>
+<div class="step" data-y="800" data-x="0">
+<h2>Non Blocking I/O</h2>
+
+<pre><code>printLine("Please input your name: ");
+// non blocked this line, go next.
+var name = getLine();
+// name is *undefined*.
+var result = db.save(name);
+// result is always not 'ok' !!!
+if (result === 'ok')
+  printLine("saved!");
+</code></pre>
+
+</div>
+<div class="step" data-y="800" data-x="1200">
+<h2>Callbacks</h2>
+
+<pre><code>printLine("Please input your name: ", function(){
+  getLine(function(err, name) {
+    db.save(name, function(err, r) {
+      if (r === 'ok')
+        printLine("saved!");
+    });
+  });
+});
+</code></pre>
+
+</div>
+<div class="step" data-y="800" data-x="2400">
+<h2>single thread</h2>
+
+<pre><code>printLine("Please input your name: ", function(){
+  getLine(function(err, name) {
+    db.save(name, function(err, r) {
+      if (r === 'ok')
+        printLine("saved!");
+      // add new code
+      db.getAll(function(err, names) {
+        names.forEach(function(name) {
+          printLine(name);
+        });
+      });
+    });
+  });
+});
+</code></pre>
+
+</div>
+<div class="step" data-y="800" data-x="3600">
+<h2>single thread</h2>
+
+<pre><code>printLine("Please input your name: ", function(){
+  getLine(function(err, name) {
+    db.save(name, function(err, r) {
+      if (r === 'ok')
+        printLine("saved!");
+      db.getAll(function(err, names) {
+        // if num of names is huge.
+        // stop all tasks !!!
+        names.forEach(function(name) {
+          printLine(name);
+        });
+      });
+    });
+  });
+});
+</code></pre>
+
+</div>
+<div class="step" data-y="800" data-x="4800">
+<h2>process.nextTick</h2>
+
+<pre><code>printLine("Please input your name: ", function(){
+  getLine(function(err, name) {
+    db.save(name, function(err, r) {
+      if (r === 'ok')
+        printLine("saved!");
+      db.getAll(function(err, names) {
+        names.forEach(function(name) {
+          // Dont stop all task.
+          process.nextTick(function(){
+            printLine(name);
+          });
+        });
+      });
+    });
+  });
+});
+</code></pre>
+
+</div>
+<div class="step" data-y="1600" data-x="0">
+<h2>Crazy callbacks...</h2>
+
+<pre><code>printLine("Please input your name: ", function(){
+  getLine(function(err, name) {
+    db.save(name, function(err, r) {
+      if (r === 'ok')
+        printLine("saved!");
+      db.getAll(function(err, names) {
+        names.forEach(function(name) {
+          process.nextTick(function(){
+            printLine(name);
+          });
+        });
+      });
+    });
+  });
+});
+</code></pre>
+
+</div>
+<div class="step" data-y="1600" data-x="1200">
+<h2>Event Emitter!!</h2>
+
+<pre><code>var event = new EventEmitter();
+event.on('hoge', function(arg) {
+  printLine(arg);
+});
+event.emit('hoge', 'fuga');
+// print fuga
+</code></pre>
+
+</div>
+<div class="step" data-y="1600" data-x="2400">
+<h2>Event Emitter!!</h2>
+
+<pre><code>printLine("Please input your name: ", function(){
+  getLine(function(err, name) {
+    db.emit('save', name);
+  });
+});
+db.on('save end', function(err, r) {
+  if (r === 'ok')
+    printLine("saved!");
+  db.emit('getAll');
+});
+db.on('getAll end', function(err, names){
+  names.forEach(function(name) {
+    process.nextTick(function(){
+      printLine(name);
+    });
+  });
+});
+</code></pre>
+
+</div>
+<div class="step" data-y="1600" data-x="3600">
+<h2>I dont have time to talk all keywords.</h2>
 
 <p>If you have an interest, you would read these to be better.</p>
 
@@ -63,36 +224,30 @@
 <p><a href="http://www.publickey1.jp/blog/11/nodejs.html">Node.jsとは何か(Ryan Dahlの講演)</a></p>
 
 </div>
-<div data-z="500" data-rotate="90" data-scale="3" class="step" data-y="3000" data-x="1000">
-<h2>Play with Node!!!! </h2>
+<div data-rotate="360" data-scale="3" class="step" data-y="1600" data-x="4800">
+<h2>I guess 10 minutes left...</h2>
 
-<!-- data-x="1000" -->
-<!-- data-y="3000" -->
-<!-- data-z="500" -->
-<!-- data-scale="3" -->
-<!-- data-rotate="90" -->
+<!-- data-scale="3"  -->
+<!-- data-rotate="360" -->
 
 </div>
-<div data-z="500" data-rotate="90" data-scale="3" class="step" data-y="4000" data-x="2000">
-<h2>Hello JSCafe on HTTP</h2>
+<div class="step" data-y="2400" data-x="0">
+<h2>Play with Node!!!!</h2>
 
-<!-- data-x="2000" -->
-<!-- data-y="4000" -->
-<!-- data-z="500" -->
-<!-- data-scale="3" -->
-<!-- data-rotate="90" -->
+</div>
+<div class="step" data-y="2400" data-x="1200">
+<h2>Hello JSCafe on HTTP</h2>
 
 <p>easy to write!!</p>
 
 <pre><code>var http = require('http');
 http.createServer(function(req, res){
-  res.writeHead(200);
   res.end("&lt;h1&gt;hello jscafe.&lt;/h1&gt;");
 }).listen(3000);
 </code></pre>
 
 </div>
-<div class="step" data-y="800" data-x="0">
+<div class="step" data-y="2400" data-x="2400">
 <h2>Hello JSCafe on chat with you.</h2>
 
 <p>node.js chat!!</p>
@@ -114,7 +269,7 @@ server.listen(1337);
 </code></pre>
 
 </div>
-<div class="step" data-y="800" data-x="1200">
+<div class="step" data-y="2400" data-x="3600">
 <h2>Hello JSCafe on chat with you.</h2>
 
 <p>please access</p>
@@ -123,7 +278,7 @@ server.listen(1337);
 </code></pre>
 
 </div>
-<div class="step" data-y="800" data-x="2400">
+<div class="step" data-y="2400" data-x="4800">
 <h2>I guess my greetings reach you.</h2>
 
 <p>Node is fun??</p>
@@ -132,7 +287,7 @@ server.listen(1337);
 
 </div>
 <div data-z="2500" data-rotate="180" data-scale="3" class="step" data-y="3000" data-x="3000">
-<h2>I guess 10 minutes left....</h2>
+<h2>I guess 5 minutes left....</h2>
 
 <!-- data-x="3000" -->
 <!-- data-y="3000" -->
@@ -141,17 +296,21 @@ server.listen(1337);
 <!-- data-rotate="180" -->
 
 </div>
-<div class="step" data-y="800" data-x="3600">
+<div class="step" data-y="3200" data-x="0">
 <h2>Socket.io</h2>
 
 <p><a href="http://socket.io/"><img src="http://www.tonylea.com/wp-content/uploads/2012/07/socket-io.png" alt="socket.io" /></a></p>
 
 </div>
-<div class="step" data-y="800" data-x="4800">
-<h2>Socket.io is realtime library</h2>
+<div class="step" data-y="3200" data-x="1200">
+<h2>Socket.io is a realtime library for Node.js</h2>
 
 </div>
-<div class="step" data-y="1600" data-x="0">
+<div class="step" data-y="3200" data-x="2400">
+<h2>Socket.io uses WebSocket, long polling, commet</h2>
+
+</div>
+<div class="step" data-y="3200" data-x="3600">
 <h2>DDD</h2>
 
 <p>'data-*' attribute for impress.js represent HTML comment.
@@ -169,7 +328,7 @@ This comment must be write in secion.</p>
 <p>See <a href="http://bartaz.github.com/impress.js/">impress.js</a> manual for details.</p>
 
 </div>
-<div class="step" data-y="1600" data-x="1200">
+<div class="step" data-y="3200" data-x="4800">
 <h2>Command line options</h2>
 
 <ul>
@@ -203,8 +362,8 @@ if ("ontouchstart" in document.documentElement) {
     document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
 }
 </script>
+<script src="http://www.yosuke-furukawa.info:5000/socket.io/socket.io.js"></script>
 <script src="js/impress.js"></script>
-
 </body>
 </html>
 
