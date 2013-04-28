@@ -3,7 +3,7 @@ Node.js and Socket.io Demo in JSCafe
 
 Presentation is here!!
 ----------
-[presentation](http://goo.gl/46dk3)
+[http://goo.gl/46dk3](http://goo.gl/46dk3)
 
 Who are you ?
 ----------
