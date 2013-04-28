@@ -289,7 +289,7 @@ Socket.io is easy to use!!!
 ------
     var io = require('socket.io').listen(3000);
     io.sockets.on('connection', function(socket) {
-      socket.on('messsage', function(message) {
+      socket.on('message', function(message) {
         // broadcast
         io.sockets.emit('message', message);
       });
