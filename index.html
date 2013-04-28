@@ -14,12 +14,18 @@
     </div>
 
 <div id="title" class="step" data-y="0" data-x="0">
-<h1>Node.js 入門と Socket.io によるデモ</h1>
+<h1>Node.js and Socket.io Demo in JSCafe</h1>
 
 <p><a href="http://goo.gl/46dk3">presentation</a></p>
 
 </div>
 <div class="step" data-y="0" data-x="1200">
+<h2>Presentation is here!!</h2>
+
+<p><a href="http://goo.gl/46dk3">http://goo.gl/46dk3</a></p>
+
+</div>
+<div class="step" data-y="0" data-x="2400">
 <h2>Who are you ?</h2>
 
 <p><img src="https://si0.twimg.com/profile_images/206948941/wall-e.jpg" alt="icon" /></p>
@@ -33,7 +39,7 @@
 <p>Community : <a href="http://nodejs.jp/"><img src="http://joyeur.files.wordpress.com/2011/11/node_logo-01.png" alt="node" /></a></p>
 
 </div>
-<div class="step" data-y="0" data-x="2400">
+<div class="step" data-y="0" data-x="3600">
 <h2>What is Node.js ?</h2>
 
 <p>Javascript on <code>***</code> (Server, Arduino, Rapsberry PI, etc.)</p>
@@ -41,7 +47,7 @@
 <p>Not only web browser !!!</p>
 
 </div>
-<div class="step" data-y="0" data-x="3600">
+<div class="step" data-y="0" data-x="4800">
 <h2>Keywords</h2>
 
 <ol>
@@ -53,7 +59,7 @@
 </ol>
 
 </div>
-<div class="step" data-y="0" data-x="4800">
+<div class="step" data-y="800" data-x="0">
 <h2>Non Blocking I/O</h2>
 
 <pre><code>printLine("Please input your name: ");
@@ -67,7 +73,7 @@ if (result === 'ok')
 note: pseudo code.</p>
 
 </div>
-<div class="step" data-y="800" data-x="0">
+<div class="step" data-y="800" data-x="1200">
 <h2>Non Blocking I/O</h2>
 
 <pre><code>printLine("Please input your name: ");
@@ -81,7 +87,7 @@ if (result === 'ok')
 </code></pre>
 
 </div>
-<div class="step" data-y="800" data-x="1200">
+<div class="step" data-y="800" data-x="2400">
 <h2>Callbacks</h2>
 
 <pre><code>printLine("Please input your name: ", function(){
@@ -95,7 +101,7 @@ if (result === 'ok')
 </code></pre>
 
 </div>
-<div class="step" data-y="800" data-x="2400">
+<div class="step" data-y="800" data-x="3600">
 <h2>single thread</h2>
 
 <pre><code>printLine("Please input your name: ", function(){
@@ -115,7 +121,7 @@ if (result === 'ok')
 </code></pre>
 
 </div>
-<div class="step" data-y="800" data-x="3600">
+<div class="step" data-y="800" data-x="4800">
 <h2>single thread</h2>
 
 <pre><code>printLine("Please input your name: ", function(){
@@ -136,7 +142,7 @@ if (result === 'ok')
 </code></pre>
 
 </div>
-<div class="step" data-y="800" data-x="4800">
+<div class="step" data-y="1600" data-x="0">
 <h2>process.nextTick</h2>
 
 <pre><code>printLine("Please input your name: ", function(){
@@ -158,7 +164,7 @@ if (result === 'ok')
 </code></pre>
 
 </div>
-<div class="step" data-y="1600" data-x="0">
+<div class="step" data-y="1600" data-x="1200">
 <h2>Crazy callbacks...</h2>
 
 <pre><code>printLine("Please input your name: ", function(){
@@ -179,7 +185,7 @@ if (result === 'ok')
 </code></pre>
 
 </div>
-<div class="step" data-y="1600" data-x="1200">
+<div class="step" data-y="1600" data-x="2400">
 <h2>Event Emitter!!</h2>
 
 <pre><code>var event = new EventEmitter();
@@ -191,7 +197,7 @@ event.emit('hoge', 'fuga');
 </code></pre>
 
 </div>
-<div class="step" data-y="1600" data-x="2400">
+<div class="step" data-y="1600" data-x="3600">
 <h2>Event Emitter!!</h2>
 
 <pre><code>printLine("Please input your name: ", function(){
@@ -214,7 +220,7 @@ db.on('getAll end', function(err, names){
 </code></pre>
 
 </div>
-<div class="step" data-y="1600" data-x="3600">
+<div class="step" data-y="1600" data-x="4800">
 <h2>I dont have time to talk all keywords.</h2>
 
 <p>If you have an interest, you would read these to be better.</p>
@@ -226,18 +232,18 @@ db.on('getAll end', function(err, names){
 <p><a href="http://www.publickey1.jp/blog/11/nodejs.html">Node.jsとは何か(Ryan Dahlの講演)</a></p>
 
 </div>
-<div data-rotate="720" data-scale="3" class="step" data-y="1600" data-x="4800">
+<div data-rotate="720" data-scale="3" class="step" data-y="2400" data-x="0">
 <h2>I guess 10 minutes left...</h2>
 
 <!-- data-scale="3"  -->
 <!-- data-rotate="720" -->
 
 </div>
-<div class="step" data-y="2400" data-x="0">
+<div class="step" data-y="2400" data-x="1200">
 <h2>Play with Node!!!!</h2>
 
 </div>
-<div class="step" data-y="2400" data-x="1200">
+<div class="step" data-y="2400" data-x="2400">
 <h2>Hello JSCafe on HTTP</h2>
 
 <p>easy to write!!</p>
@@ -249,7 +255,7 @@ http.createServer(function(req, res){
 </code></pre>
 
 </div>
-<div class="step" data-y="2400" data-x="2400">
+<div class="step" data-y="2400" data-x="3600">
 <h2>Hello JSCafe on chat with you.</h2>
 
 <p>node.js chat!!</p>
@@ -271,7 +277,7 @@ server.listen(1337);
 </code></pre>
 
 </div>
-<div class="step" data-y="2400" data-x="3600">
+<div class="step" data-y="2400" data-x="4800">
 <h2>Hello JSCafe on chat with you.</h2>
 
 <p>please access</p>
@@ -280,7 +286,7 @@ server.listen(1337);
 </code></pre>
 
 </div>
-<div class="step" data-y="2400" data-x="4800">
+<div class="step" data-y="3200" data-x="0">
 <h2>I guess my greetings reach you.</h2>
 
 <p>Node is fun??</p>
@@ -298,21 +304,21 @@ server.listen(1337);
 <!-- data-rotate="180" -->
 
 </div>
-<div class="step" data-y="3200" data-x="0">
+<div class="step" data-y="3200" data-x="1200">
 <h2>Socket.io</h2>
 
 <p><a href="http://socket.io/"><img src="http://www.tonylea.com/wp-content/uploads/2012/07/socket-io.png" alt="socket.io" /></a></p>
 
 </div>
-<div class="step" data-y="3200" data-x="1200">
+<div class="step" data-y="3200" data-x="2400">
 <h2>Socket.io is a realtime library for Node.js</h2>
 
 </div>
-<div class="step" data-y="3200" data-x="2400">
+<div class="step" data-y="3200" data-x="3600">
 <h2>Socket.io uses WebSocket, long polling, Adobe flash socket</h2>
 
 </div>
-<div class="step" data-y="3200" data-x="3600">
+<div class="step" data-y="3200" data-x="4800">
 <h2>So Socket.io supports many kinds of browsers!!!</h2>
 
 <ol>
@@ -324,11 +330,11 @@ server.listen(1337);
 </ol>
 
 </div>
-<div class="step" data-y="3200" data-x="4800">
+<div class="step" data-y="4000" data-x="0">
 <h2>Actually, this slide uses Socket.io :)</h2>
 
 </div>
-<div class="step" data-y="4000" data-x="0">
+<div class="step" data-y="4000" data-x="1200">
 <h2>A lot of demo use Socket.io</h2>
 
 <ul>
@@ -340,7 +346,7 @@ server.listen(1337);
 <p>Google "socket.io chat/paint/presentation"</p>
 
 </div>
-<div class="step" data-y="4000" data-x="1200">
+<div class="step" data-y="4000" data-x="2400">
 <h2>Socket.io is easy to use!!!</h2>
 
 <pre><code>var io = require('socket.io').listen(3000);
@@ -353,11 +359,11 @@ io.sockets.on('connection', function(socket) {
 </code></pre>
 
 </div>
-<div class="step" data-y="4000" data-x="2400">
+<div class="step" data-y="4000" data-x="3600">
 <h2>Socket.io + Webhook</h2>
 
 </div>
-<div class="step" data-y="4000" data-x="3600">
+<div class="step" data-y="4000" data-x="4800">
 <h2>Summary</h2>
 
 <ul>
@@ -367,7 +373,7 @@ io.sockets.on('connection', function(socket) {
 </ul>
 
 </div>
-<div class="step" data-y="4000" data-x="4800">
+<div class="step" data-y="4800" data-x="0">
 <h2>DeNA NEEDS YOU!!!</h2>
 
 <p><em>JavaScript Engineer</em>
