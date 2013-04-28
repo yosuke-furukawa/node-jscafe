@@ -255,40 +255,38 @@ Socket.io
 Socket.io is a realtime library for Node.js
 -------
 
-Socket.io uses WebSocket, long polling, commet
+Socket.io uses WebSocket, long polling, Adobe flash socket
 -------
 
+So Socket.io supports many kinds of browsers!!!
+-------
 
-DDD
---------
-'data-*' attribute for impress.js represent HTML comment.
-This comment must be write in secion.
+1. IE 5.5+
+2. Safari 3+
+3. Google Chrome 4+
+4. Firefox 3+
+5. Opera 10.61+
 
-    <!-- data-x="2400" -->
-    <!-- data-y="3000" -->
-    <!-- data-z="-100" -->
-    <!-- data-scale="10" -->
-    <!-- data-rotate="90" -->
 
-markdown2impress assume and calculate default x,y, if you do not specify this.
+Actually, this slide uses Socket.io :)
+-------
 
-See [impress.js](http://bartaz.github.com/impress.js/) manual for details.
+A lot of demo use Socket.io
+-------
 
-Command line options
-----------
++ chat
++ realtime paint
++ presentation tool
 
-- **--width=1200**
+Google "socket.io chat/paint/presentation"
 
-    Width of slide.
+Socket.io is easy to use!!!
+------
 
-- **--height=800**
 
-    Height of slide.
-
-- **--column=5**
-
-    Column of slide.
-
-- **--outputdir=.**
-
-    Output directory.
+WE NEED YOU!!!
+-------
+*JavaScript Engineer*
+*Noder*
+[Join us!!!!](http://dena.com/recruit/)
+![dena](https://www.e2r.jp/export/ja/dena2014/images/dena_logo.png)
