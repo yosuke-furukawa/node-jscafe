@@ -1,5 +1,9 @@
-Node.js 入門と Socket.io によるデモ
+Node.js and Socket.io Demo in JSCafe
 ==========
+
+Presentation is here!!
+----------
+[presentation](http://goo.gl/46dk3)
 
 Who are you ?
 ----------
