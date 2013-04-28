@@ -434,7 +434,7 @@ if ("ontouchstart" in document.documentElement) {
     var presenter = io.connect('http://www.yosuke-furukawa.info:5000/');
     var listener = io.connect('http://www.yosuke-furukawa.info:5000/');
     listener.on('reload', function() {
-      location.reload();
+      location.reload(true);
     });
     listener.on('sync', function(index) {
         console.log(index);
