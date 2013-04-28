@@ -286,7 +286,7 @@ Socket.io is easy to use!!!
     io.sockets.on('connection', function(socket) {
       socket.on('messsage', function(message) {
         // broadcast
-        io.sockets.emit('msg', message);
+        io.sockets.emit('message', message);
       });
     });
 
