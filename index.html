@@ -341,6 +341,15 @@ server.listen(1337);
 <div class="step" data-y="4000" data-x="1200">
 <h2>Socket.io is easy to use!!!</h2>
 
+<pre><code>var io = require('socket.io').listen(3000);
+io.sockets.on('connection', function(socket) {
+  socket.on('msg', function(message) {
+    // broadcast
+    io.sockets.emit('msg', message);
+  });
+});
+</code></pre>
+
 </div>
 <div class="step" data-y="4000" data-x="2400">
 <h2>WE NEED YOU!!!</h2>

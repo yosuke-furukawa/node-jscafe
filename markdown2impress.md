@@ -282,7 +282,13 @@ Google "socket.io chat/paint/presentation"
 
 Socket.io is easy to use!!!
 ------
-
+    var io = require('socket.io').listen(3000);
+    io.sockets.on('connection', function(socket) {
+      socket.on('msg', function(message) {
+        // broadcast
+        io.sockets.emit('msg', message);
+      });
+    });
 
 WE NEED YOU!!!
 -------
