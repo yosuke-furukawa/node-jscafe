@@ -309,5 +309,6 @@ DeNA NEEDS YOU!!!
 -------
 + *JavaScript Engineer*
 + *Noder*
++ *Designer*
 + [Join us!!!!](http://dena.com/recruit/)
 ![dena](https://www.e2r.jp/export/ja/dena2014/images/dena_logo.png)
