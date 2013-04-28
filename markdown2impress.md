@@ -1,5 +1,6 @@
 Node.js 入門と Socket.io によるデモ
 ==========
+[presentation](http://goo.gl/46dk3)
 
 Who are you ?
 ----------
