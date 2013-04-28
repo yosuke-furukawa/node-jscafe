@@ -188,7 +188,7 @@ If you have an interest, you would read these to be better.
 I guess 10 minutes left...
 ---------
 <!-- data-scale="3"  -->
-<!-- data-rotate="360" -->
+<!-- data-rotate="720" -->
 
 Play with Node!!!!
 ----------
@@ -290,7 +290,17 @@ Socket.io is easy to use!!!
       });
     });
 
-WE NEED YOU!!!
+Socket.io + Webhook
+------
+
+Summary
+------
++ Node.js is fun.
++ Socke.io is also fun.
++ We are fan.
+
+
+DeNA NEEDS YOU!!!
 -------
 *JavaScript Engineer*
 *Noder*
